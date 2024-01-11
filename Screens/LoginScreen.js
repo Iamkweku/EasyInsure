@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import axios from 'axios';
 
 const InputField = ({ iconName, placeholder, secureTextEntry, value, onChangeText }) => (
   <View style={styles.inputContainer}>
@@ -20,11 +21,35 @@ const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignIn = () => {
-    // Implement your sign-in logic here
-    // For demonstration, directly navigating to HomePage
-    navigation.navigate('HomePage');
+  const handleSignIn = async () => {
+    try {
+      const response = await axios.post('https://70b4-102-176-94-109.ngrok-free.app/login', {
+        email: email,
+        password: password,
+      });
+  
+      const { data } = response;
+      if (data) {
+        console.log(data.token); // Use the token as needed
+        navigation.navigate('HomePage');
+      }
+    } catch (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', error.message);
+      }
+    }
   };
+
 
   return (
     <View style={styles.container}>

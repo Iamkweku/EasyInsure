@@ -1,35 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import axios from 'axios';
 
-const VerificationScreen = ({ navigation }) => {
+const VerificationScreen = ({ navigation, route }) => {
   const [code, setCode] = useState('');
   const [timer, setTimer] = useState(30);
+  const userEmail = route.params?.email; // Retrieve user email passed from the previous screen
 
   useEffect(() => {
-    // Start a timer for the resend button
     const countdown = setInterval(() => {
       setTimer(prevTime => (prevTime > 0 ? prevTime - 1 : 0));
     }, 1000);
-
-    // Clear interval on component unmount
     return () => clearInterval(countdown);
   }, []);
 
-  const handleVerify = () => {
-    // Implement verification logic here
-    navigation.navigate('Onboarding');
+  const handleVerify = async () => {
+    try {
+      const response = await axios.post('https://70b4-102-176-94-109.ngrok-free.app/verify-otp', {
+        email: userEmail,
+        otp: code
+      });
+
+      if (response.data.success) {
+        navigation.navigate('Onboarding');
+      } else {
+        alert('Invalid OTP. Please try again.');
+      }
+    } catch (error) {
+      alert('Failed to verify OTP. Please try again.');
+      console.error('Error verifying OTP:', error);
+    }
   };
 
-  const handleResendCode = () => {
-    // Implement resend code logic here
-    setTimer(30); // Reset timer
+  const handleResendCode = async () => {
+    if (timer === 0) {
+      try {
+        await axios.post('https://70b4-102-176-94-109.ngrok-free.app/send-otp', { email: userEmail });
+        setTimer(30);
+      } catch (error) {
+        alert('Failed to resend OTP. Please try again.');
+        console.error('Error resending OTP:', error);
+      }
+    }
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Almost there</Text>
       <Text style={styles.subtitle}>
-        Please enter the 6-digit code sent to your email example@gmail.com for verification.
+        Please enter the 6-digit code sent to {userEmail} for verification.
       </Text>
 
       <TextInput
@@ -46,15 +65,9 @@ const VerificationScreen = ({ navigation }) => {
 
       <TouchableOpacity onPress={handleResendCode} disabled={timer > 0}>
         <Text style={styles.resendText}>
-          Didn’t receive any code? Resend Again
+          Didn’t receive any code? {timer === 0 ? "Resend" : "Resend Again in " + (timer < 10 ? `0${timer}` : timer) + "s"}
         </Text>
       </TouchableOpacity>
-
-      {timer > 0 && (
-        <Text style={styles.timerText}>
-          Request new code in 00:{timer < 10 ? `0${timer}` : timer}s
-        </Text>
-      )}
     </ScrollView>
   );
 };
@@ -104,10 +117,6 @@ const styles = StyleSheet.create({
     color: '#07A4DB',
     textAlign: 'center',
     marginBottom: 10,
-  },
-  timerText: {
-    color: 'gray',
-    textAlign: 'center',
   },
 });
 

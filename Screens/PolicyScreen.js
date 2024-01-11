@@ -26,7 +26,7 @@ const navigation = useNavigation();
         <Text style={styles.contentTitle}>PROTECT YOUR HOME TOTALLY</Text>
         <Text style={styles.contentHeader}>Home Insurance</Text>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('InsuranceForm')}>
           <Text style={styles.buttonText}>BUY NOW</Text>
         </TouchableOpacity>
 

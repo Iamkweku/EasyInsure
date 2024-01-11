@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import axios from 'axios';
 
 const InputField = ({ iconName, placeholder, secureTextEntry, value, onChangeText, keyboardType }) => (
   <View style={styles.inputContainer}>
@@ -23,11 +24,41 @@ const RegisterScreen = ({ navigation }) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignUp = () => {
-    // Implement your sign-up logic here
-    navigation.navigate('Verification');
-  };
+  const handleSignUp = async () => {
+    try {
+      const response = await axios.post('https://70b4-102-176-94-109.ngrok-free.app/register', {
+        fullName: fullName,
+        email: email,
+        phoneNumber: phoneNumber,
+        password: password,
+      });
 
+      const data = response.data;
+      if (data && data.token) {
+        console.log(data.token); // Use the token as needed
+        navigation.navigate('Verification');
+      } else {
+        console.log('Registration failed:', data);
+        alert('Registration failed. Please try again.');
+      }
+    } catch (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error('Server response error:', error.response.status, error.response.data);
+        alert(`Error: ${error.response.status} - ${error.response.data}`);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('Request made but no response:', error.request);
+        alert('No response from the server. Please check your network connection.');
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error('Error in setting up request:', error.message);
+        alert('Error: ' + error.message);
+      }
+    }
+  };
+  
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Get Started</Text>

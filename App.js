@@ -19,6 +19,7 @@ import MyAccountScreen from './Screens/MyAccountScreen';
 import NotificationSettingsScreen from './Screens/NotificationSettingsScreen';
 import LanguageSettingsScreen from './Screens/LanguageSettingsScreen';
 import ChatbotScreen from './Screens/ChatbotScreen';
+import InsuranceForm from './Screens/InsuranceForm';
 
 
 const Stack = createStackNavigator();
@@ -84,6 +85,7 @@ export default function App() {
         <Stack.Screen name="NotificationSettingsScreen" component={NotificationSettingsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="LanguageSettingsScreen" component={LanguageSettingsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="ChatbotScreen" component={ChatbotScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="InsuranceForm" component={InsuranceForm} options={{ headerShown: false }} />
         {/* Add more screens here as needed */}
       </Stack.Navigator>
     </NavigationContainer>
