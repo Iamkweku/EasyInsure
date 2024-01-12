@@ -23,7 +23,7 @@ const LoginScreen = ({ navigation }) => {
 
   const handleSignIn = async () => {
     try {
-      const response = await axios.post('https://70b4-102-176-94-109.ngrok-free.app/login', {
+      const response = await axios.post('https://a6f3-197-255-118-231.ngrok-free.app/login', {
         email: email,
         password: password,
       });

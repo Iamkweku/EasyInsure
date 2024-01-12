@@ -26,7 +26,7 @@ const RegisterScreen = ({ navigation }) => {
 
   const handleSignUp = async () => {
     try {
-      const response = await axios.post('https://70b4-102-176-94-109.ngrok-free.app/register', {
+      const response = await axios.post('https://a6f3-197-255-118-231.ngrok-free.app/register', {
         fullName: fullName,
         email: email,
         phoneNumber: phoneNumber,
@@ -36,7 +36,9 @@ const RegisterScreen = ({ navigation }) => {
       const data = response.data;
       if (data && data.token) {
         console.log(data.token); // Use the token as needed
-        navigation.navigate('Verification');
+        navigation.navigate('Verification', {
+          email: email
+        });
       } else {
         console.log('Registration failed:', data);
         alert('Registration failed. Please try again.');
