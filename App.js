@@ -20,7 +20,19 @@ import NotificationSettingsScreen from './Screens/NotificationSettingsScreen';
 import LanguageSettingsScreen from './Screens/LanguageSettingsScreen';
 import ChatbotScreen from './Screens/ChatbotScreen';
 import InsuranceForm from './Screens/InsuranceForm';
-
+import Property from './Screens/Property';
+import Car from './Screens/Car';
+import Fire from './Screens/Fire';
+import Motor from './Screens/Motor';
+import PrudentialpolicyScreen from './Screens/PrudentialpolicyScreen';
+import HollardInsuranceScreen from './Screens/HollardInsuranceScreen';
+import MilifepolicyScreen from './Screens/MilifepolicyScreen'
+import SicpolicyScreen from './Screens/SicpolicyScreen';
+import StarlifepolicyScreen from './Screens/StarlifepolicyScreen';
+import StarAssuranceScreen from './Screens/StarAssuranceScreen';
+import EnterprisePolicyScreen from './Screens/EnterprisePolicyScreen';
+import PropertyPolicyScreen from './Screens/PropertyPolicyScreen';
+import FirePolicyScreen from './Screens/FirePolicyScreen';
 
 const Stack = createStackNavigator();
 
@@ -86,6 +98,19 @@ export default function App() {
         <Stack.Screen name="LanguageSettingsScreen" component={LanguageSettingsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="ChatbotScreen" component={ChatbotScreen} options={{ headerShown: false }} />
         <Stack.Screen name="InsuranceForm" component={InsuranceForm} options={{ headerShown: false }} />
+        <Stack.Screen name="Property" component={Property} options={{ headerShown: false }} />
+        <Stack.Screen name="Car" component={Car} options={{ headerShown: false }} />
+        <Stack.Screen name="Fire" component={Fire} options={{ headerShown: false }} />
+        <Stack.Screen name="Motor" component={Motor} options={{ headerShown: false }} />
+        <Stack.Screen name="PrudentialpolicyScreen" component={PrudentialpolicyScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="HollardInsuranceScreen" component={HollardInsuranceScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="MilifepolicyScreen" component={MilifepolicyScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="SicpolicyScreen" component={SicpolicyScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="StarlifepolicyScreen" component={StarlifepolicyScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="StarAssuranceScreen" component={StarAssuranceScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="EnterprisePolicyScreen" component={EnterprisePolicyScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="PropertyPolicyScreen" component={PropertyPolicyScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="FirePolicyScreen" component={FirePolicyScreen} options={{ headerShown: false }} />
         {/* Add more screens here as needed */}
       </Stack.Navigator>
     </NavigationContainer>

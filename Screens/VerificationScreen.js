@@ -12,7 +12,7 @@ import axios from "axios";
 function sendOtp(userEmail) { 
   
   axios.post(
-      "https://a6f3-197-255-118-231.ngrok-free.app/send-otp",
+      "https://5d42-197-255-127-129.ngrok-free.app/send-otp",
       { email: userEmail }
     ).catch(e => {
       console.log(e)
@@ -36,7 +36,7 @@ const VerificationScreen = ({ navigation, route }) => {
   const handleVerify = async () => {
     try {
       const response = await axios.post(
-        "https://a6f3-197-255-118-231.ngrok-free.app/verify-otp",
+        "https://5d42-197-255-127-129.ngrok-free.app/verify-otp",
         {
           email: userEmail,
           otp: code,
@@ -60,7 +60,7 @@ const VerificationScreen = ({ navigation, route }) => {
     if (timer === 0) {
       try {
         await axios.post(
-          "https://a6f3-197-255-118-231.ngrok-free.app/send-otp",
+          "https://5d42-197-255-127-129.ngrok-free.app /send-otp",
           { email: userEmail }
         );
         setTimer(30);

@@ -19,7 +19,7 @@ const insurancePlans = [
     coverAmount: 'GH₵20k',
     premium: 'GH₵150/month',
     image: require('../assets/Prudentential.png'),
-    policyScreen: 'PrudentialpolicyScreen',
+    policyScreen: 'Prudentialpolicy',
   },
   {
     companyName: 'Hollard Insurance LTD',
@@ -27,7 +27,7 @@ const insurancePlans = [
     coverAmount: 'GH₵100k',
     premium: 'GH₵300/month',
     image: require('../assets/Hollard.jpg'),
-    policyScreen: 'HollardInsuranceScreen',
+    policyScreen: 'Hollardpolicy',
   },
 
   {
@@ -36,7 +36,7 @@ const insurancePlans = [
     coverAmount: 'GH₵30k',
     premium: 'GH₵100/month',
     image: require('../assets/Milife.png'),
-    policyScreen: 'MilifepolicyScreen',
+    policyScreen: 'Milifepolicy',
   },
   {
     companyName: 'SIC Insurance LTD',
@@ -44,7 +44,7 @@ const insurancePlans = [
     coverAmount: 'GH₵10k',
     premium: 'GH₵20/month',
     image: require('../assets/Sic.jpg'),
-    policyScreen: 'SicpolicyScreen',
+    policyScreen: 'Sicpolicy',
   },
 
   {
@@ -53,7 +53,7 @@ const insurancePlans = [
     coverAmount: 'GH₵300k',
     premium: 'GH₵900/month',
     image: require('../assets/StarLife.jpg'),
-    policyScreen: 'StarlifepolicyScreen',
+    policyScreen: 'Starlifepolicy',
   },
  
  
@@ -153,7 +153,7 @@ const App = () => {
       >
         {/* Replace these TouchableOpacities with your actual category buttons */}
         <TouchableOpacity onPress={() => navigation.navigate('Homepage')}>
-          <Image source={require('../assets/Heathy.png')} style={styles.categoryIcon} />
+          <Image source={require('../assets/Health.png')} style={styles.categoryIcon} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Motor')}>
           <Image source={require('../assets/Bike.png')} style={styles.categoryIcon} />
@@ -169,10 +169,8 @@ const App = () => {
         </TouchableOpacity>
       </ScrollView>
 
-      <View>
-       <Text style={styles.RecommendText}>Recommended Health Insurance Plans</Text>
-      </View>
-      
+      <Text style={styles.RecommendText}>Recommended Health Insurance Plans</Text>
+
       <ScrollView style={{ flex: 1 }}>
         <View style={styles.plansContainer}>
           {renderFilteredPlans(insurancePlans.slice(0, 1))}

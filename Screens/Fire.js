@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {
   StyleSheet,
@@ -14,49 +13,65 @@ import { useNavigation } from '@react-navigation/native';
 
 const insurancePlans = [
   {
-    companyName: 'Prudential Insurance LTD',
-    planName: 'SupercarePlus Plan',
-    coverAmount: 'GH₵20k',
-    premium: 'GH₵150/month',
-    image: require('../assets/Prudentential.png'),
-    policyScreen: 'PrudentialpolicyScreen',
+    companyName: 'Enterprise insurance company limited',
+    planName: 'Fire Insurance',
+    coverAmount: 'GH₵15k',
+    premium: 'GH₵1k/month',
+    image: require('../assets/Enterprise.png'),
+    policyScreen: 'FirePolicyScreen',
   },
   {
-    companyName: 'Hollard Insurance LTD',
-    planName: 'Adepa Funeral Plan ',
-    coverAmount: 'GH₵100k',
-    premium: 'GH₵300/month',
-    image: require('../assets/Hollard.jpg'),
-    policyScreen: 'HollardInsuranceScreen',
-  },
-
-  {
-    companyName: 'MiLife Insurance LTD',
-    planName: 'MiTribute Plan',
-    coverAmount: 'GH₵30k',
-    premium: 'GH₵100/month',
-    image: require('../assets/Milife.png'),
-    policyScreen: 'MilifepolicyScreen',
-  },
-  {
-    companyName: 'SIC Insurance LTD',
-    planName: 'Life Insurance',
+    companyName: 'Ghana Union Company',
+    planName: 'Fire Insurance',
     coverAmount: 'GH₵10k',
-    premium: 'GH₵20/month',
-    image: require('../assets/Sic.jpg'),
-    policyScreen: 'SicpolicyScreen',
+    premium: 'GH₵850/month',
+    image: require('../assets/GhanaUnion.png'),
+    policyScreen: 'FirePolicyScreen',
   },
 
   {
-    companyName: 'StarLife Insurance LTD',
-    planName: 'Family Protection Plan',
-    coverAmount: 'GH₵300k',
-    premium: 'GH₵900/month',
-    image: require('../assets/StarLife.jpg'),
-    policyScreen: 'StarlifepolicyScreen',
+    companyName: 'Metropolitan Insurance Company',
+    planName: 'Fire insurance',
+    coverAmount: 'GH₵5k',
+    premium: 'GH₵60/month',
+    image: require('../assets/Metropolitian.png'),
+    policyScreen: 'FirePolicyScreen',
   },
- 
- 
+  {
+    companyName: 'Donewell Insurance Company ltd',
+    planName: 'Fire Insurance',
+    coverAmount: 'GH₵17k',
+    premium: 'GH₵450/month',
+    image: require('../assets/Donewell.png'),
+    policyScreen: 'FirePolicyScreen',
+  },
+
+  {
+    companyName: 'SIC Insurance Company ltd',
+    planName: 'Fire Insurance',
+    coverAmount: 'GH₵15k',
+    premium: 'GH₵700/month',
+    image: require('../assets/Sic.png'),
+    policyScreen: 'FirePolicyScreen',
+  },
+  {
+    companyName: ' GLICO Insurance ltd',
+    planName: 'Fire Insurance',
+    coverAmount: 'GH₵15k',
+    premium: 'GH₵700/month',
+    image: require('../assets/Glico.png'),
+    policyScreen: 'FirePolicyScreen',
+  },
+
+  {
+    companyName: 'Star Assurance',
+    planName: 'Fire Insurance',
+    coverAmount: 'GH₵15k',
+    premium: 'GH₵700/month',
+    image: require('../assets/StarAssurance.png'),
+    policyScreen: 'FirePolicyScreen',
+  },
+
   // ... more plans
 ];
 
@@ -152,8 +167,8 @@ const App = () => {
         style={styles.categoriesScroll}
       >
         {/* Replace these TouchableOpacities with your actual category buttons */}
-        <TouchableOpacity onPress={() => navigation.navigate('Homepage')}>
-          <Image source={require('../assets/Heathy.png')} style={styles.categoryIcon} />
+        <TouchableOpacity onPress={() => navigation.navigate('HomePage')}>
+          <Image source={require('../assets/Health.png')} style={styles.categoryIcon} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Motor')}>
           <Image source={require('../assets/Bike.png')} style={styles.categoryIcon} />
@@ -169,10 +184,8 @@ const App = () => {
         </TouchableOpacity>
       </ScrollView>
 
-      <View>
-       <Text style={styles.RecommendText}>Recommended Health Insurance Plans</Text>
-      </View>
-      
+      <Text style={styles.RecommendText}>Recommended Health Insurance Plans</Text>
+
       <ScrollView style={{ flex: 1 }}>
         <View style={styles.plansContainer}>
           {renderFilteredPlans(insurancePlans.slice(0, 1))}

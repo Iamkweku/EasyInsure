@@ -23,7 +23,7 @@ const LoginScreen = ({ navigation }) => {
 
   const handleSignIn = async () => {
     try {
-      const response = await axios.post('https://a6f3-197-255-118-231.ngrok-free.app/login', {
+      const response = await axios.post('  https://5d42-197-255-127-129.ngrok-free.app /login', {
         email: email,
         password: password,
       });
@@ -31,7 +31,7 @@ const LoginScreen = ({ navigation }) => {
       const { data } = response;
       if (data) {
         console.log(data.token); // Use the token as needed
-        navigation.navigate('HomePage');
+        navigation.navigate('Property');
       }
     } catch (error) {
       if (error.response) {
